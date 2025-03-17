@@ -1,3 +1,3 @@
-# what-makes-good-rm
+# What Makes a Reward Model a Good Teacher? An Optimization Perspective
 
 Coming soon ...

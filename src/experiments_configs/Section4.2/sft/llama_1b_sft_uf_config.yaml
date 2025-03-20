@@ -1,0 +1,39 @@
+do_sft: true
+do_rm: false
+do_rm_eval: false
+do_pg: false
+
+cache_dir: 
+seed: 372
+
+sft_config:
+  output_dir_base: outputs/sft/llama1b_uf
+  do_train: true
+  dataset_path: FILL_PATH_TO_RELABELED_ULTRAFEEDBACK_DATASET_HERE
+  load_dataset_from_file: true
+  dataset_train_split: train_rm_prefs
+  dataset_test_split: test_prefs
+  dataset_text_field: chosen # Not used if AlpacaFarm is the dataset
+  num_train_samples: -1
+  pretrained_model_path: meta-llama/Llama-3.2-1B
+  save_model: true
+  bf16: false
+  use_liger_kernel: false
+  trust_remote_code: true
+  per_device_train_batch_size: 8
+  gradient_accumulation_steps: 4
+  learning_rate: 0.000001
+  weight_decay: 0
+  num_train_epochs: 1
+  eval_strategy: "steps"
+  eval_steps: 100
+  eval_on_start: true
+  save_strategy: "no"
+  save_only_model: true
+  report_to: "tensorboard"
+  logging_steps: 10
+  gradient_checkpointing: false
+  lr_scheduler_type: "constant"
+  warmup_ratio: 0
+  algo_specific:
+    max_seq_length: # We filter out long samples on the dataset level so typically should not need to use this

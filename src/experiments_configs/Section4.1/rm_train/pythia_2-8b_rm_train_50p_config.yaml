@@ -1,0 +1,39 @@
+do_sft: false
+do_rm: true
+do_rm_eval: false
+do_pg: false
+
+cache_dir: 
+seed: -1
+
+rm_config:
+  output_dir_base: outputs/rm/pythia2-8b_alpaca
+  do_train: true
+  dataset_path: FILL_PATH_HERE # Path to UltraFeedback dataset with on-policy generated responses (labeled according to ground truth reward)
+  second_dataset_path: FILL_PATH_HERE # Path to UltraFeedback dataset with original responses (labeled according to ground truth reward)
+  load_dataset_from_file: true
+  frac_samples_from_first_dataset: 0.5 # Fraction of samples to take from the first dataset, and the rest are taken from the second dataset (this setting corresponds to 50% on-policy)
+  num_train_samples: -1
+  data_selection_seed: 182
+  pretrained_model_path: FILL_PATH_TO_SFT_LANGUAGE_MODEL_HERE
+  save_model: true
+  bf16: false
+  use_liger_kernel: false
+  trust_remote_code: true
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 16
+  learning_rate: 0.0000005
+  weight_decay: 0
+  num_train_epochs: 1
+  eval_strategy: "steps"
+  eval_steps: 100
+  eval_on_start: true
+  save_strategy: "no"
+  save_only_model: true
+  report_to: "tensorboard"
+  logging_steps: 10
+  gradient_checkpointing: false
+  lr_scheduler_type: "constant"
+  warmup_ratio: 0
+  center_rewards_coefficient: 0.01  # Recommended value in TRL docs for encouraging zero-centered rewards is 0.01
+

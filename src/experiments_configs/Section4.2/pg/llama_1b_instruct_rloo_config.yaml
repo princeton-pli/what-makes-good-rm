@@ -1,0 +1,85 @@
+do_pg: true
+do_sft: false
+do_rm_eval: false
+do_rm: false
+
+cache_dir: 
+seed: -1
+
+pg_config:
+  output_dir_base: outputs/rloo_open_rms/llama1b_instruct
+  do_train: true
+  algorithm_name: "RLOO"
+  bf16: false
+  dataset_path: FILL_PATH_TO_RELABELED_ULTRAFEEDBACK_DATASET_HERE
+  load_dataset_from_file: true
+  num_train_samples: -1
+  data_selection_seed: 872
+  dataset_train_split: "train_rlhf_prefs"
+  dataset_test_split: "test_prefs"
+  dataset_num_proc: 1
+  reward_model_path: FILL_PATH_TO_OPEN_SOURCE_REWARD_MODEL_HERE # e.g. Ray2333/GRM-gemma2-2B-rewardmodel-ft
+  use_reward_model_tokenizer: true
+  path_to_precomputed_rewards_for_normalization: FILL_PATH_TO_PRECOMPUTED_REWARDS_USING_LLAMA1BInstruct_&_RM_ABOVE_HERE
+  language_model_path: meta-llama/Llama-3.2-1B-Instruct
+  eval_final_policy_at_end: true
+  delete_language_model_checkpoint_after_eval: false
+  trust_remote_code: true
+  per_device_train_batch_size: 4
+  gradient_accumulation_steps: 4
+  per_device_eval_batch_size: 4
+  num_train_epochs: 2
+  total_episodes: # total_episodes = int(args.num_train_epochs * self.train_dataset_len) automatically
+  eval_strategy: "steps"
+  eval_on_start: true
+  eval_steps: 40
+  save_strategy: "steps"
+  save_steps: 0.5
+  save_only_model: true
+  report_to: "tensorboard"
+  logging_steps: 25
+  learning_rate: 0.0000001
+  lr_scheduler_type: "constant"
+  warmup_ratio: 0.0
+  algo_specific:
+    num_ppo_epochs: 1
+    num_mini_batches: 2
+    kl_coef: 0.05
+    temperature: 1
+    rloo_k: 2
+    response_length: 512
+    whiten_rewards: false
+    whiten_rewards_without_kl: false
+    missing_eos_penalty: 0.0
+    num_sample_generations: 10
+    early_stopping: false
+    target_kl: 0.1
+    per_prompt_normalize_rewards: false
+    scale_reward_for_frac_prompts: 0.0
+    scale_reward_prompt_selection_seed: 8122
+    reward_scale_factor: 1.0
+
+
+# Will use this configuration to evaluate the trained policy if 'eval_final_policy_at_end' is true
+rm_eval_config:
+  only_lm_eval: true
+  output_dir_base: "" # Automatically taken from the policy gradient config (can keep empty)
+  language_model_path: "" # Automatically set to the trained policy (can keep empty)
+  proxy_reward_models: [ "" ] # Automatically set to the reward model used for training the policy (can keep empty)
+  save_generated_responses: true
+  ground_truth_reward_model_path: RLHFlow/ArmoRM-Llama3-8B-v0.1
+  dataset_path: "" # Automatically set to the reward model used for training the policy (can keep empty)
+  load_dataset_from_file: true
+  train_split: train_rlhf_prefs
+  test_split: test_prefs
+  num_train_samples: 500
+  num_test_samples: 500
+  data_selection_seed: 237
+  rm_batch_size: 64
+  lm_batch_size: 4
+  generation_config:
+    temperature: 1
+    #    max_length: 512
+    max_new_tokens: 512
+    do_sample: true
+    num_return_sequences: 10

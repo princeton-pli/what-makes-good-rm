@@ -1,0 +1,35 @@
+do_sft: false
+do_rlhf: false
+do_rm_eval: true
+do_rm: false
+
+cache_dir: 
+seed: -1
+
+rm_eval_config:
+  save_generated_responses: true
+  only_lm_eval: false
+  output_dir_base: outputs/rm_eval/pythia2-8b_alpaca
+  dataset_path: FILL_PATH_TO_RELABELED_ULTRAFEEDBACK_DATASET_HERE
+  load_dataset_from_file: true
+  train_split: train_rlhf_prefs
+  test_split: test_prefs
+  num_train_samples: 500
+  num_test_samples: 500
+  data_selection_seed: 237
+  rm_batch_size: 32
+  lm_batch_size: 4
+  language_model_path: FILL_PATH_TO_LANGUAGE_MODEL_HERE
+  ground_truth_reward_model_path: RLHFlow/ArmoRM-Llama3-8B-v0.1
+  proxy_reward_models:
+    - FILL_PATH_TO_REWARD_MODEL_TRAINED_USING_0p_ONLINE_DATA_HERE
+    - FILL_PATH_TO_REWARD_MODEL_TRAINED_USING_25p_ONLINE_DATA_HERE
+    - FILL_PATH_TO_REWARD_MODEL_TRAINED_USING_50p_ONLINE_DATA_HERE
+    - FILL_PATH_TO_REWARD_MODEL_TRAINED_USING_75p_ONLINE_DATA_HERE
+    - FILL_PATH_TO_REWARD_MODEL_TRAINED_USING_100p_ONLINE_DATA_HERE
+  generation_config:
+    temperature: 1
+    max_new_tokens: 512
+    do_sample: true
+    num_return_sequences: 10
+

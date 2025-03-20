@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "what_makes_good_rm"
+version = "0.1.0"
+description = ""
+authors = [{name = "Princeton Language and Intelligence (PLI), Princeton University"}]
+requires-python = ">=3.10"
+dependencies=[
+    'transformers == 4.46.2', 
+    'trl == 0.12.1', 
+    'accelerate == 1.1.0', 
+    'matplotlib',
+    'seaborn', 
+    'deepspeed == 0.15.4'
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

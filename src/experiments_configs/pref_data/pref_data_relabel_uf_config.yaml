@@ -1,0 +1,24 @@
+seed: 53
+relabel_config:
+  cache_dir: 
+  output_dir: data_files/uf_armorm_relabeled
+  initial_dataset_path: HuggingFaceH4/ultrafeedback_binarized
+  train_split: train_prefs
+  test_split: test_prefs
+  reward_model_path: RLHFlow/ArmoRM-Llama3-8B-v0.1
+  language_model_path:
+  rm_batch_size: 128
+  gpu_id: 0
+  tokenizer_for_length_filtering: EleutherAI/pythia-1b # If given, will use this tokenizer instead of the reward model tokenizer for filtering samples with long prompts and responses
+  max_prompt_length: 512
+  max_response_length: 512
+  filter_equals: true
+  frac_train_for_rm: 0.8
+  train_split_seed: 1283
+  generation_config:
+    temperature: 1
+    max_new_tokens: 512
+    do_sample: true
+    top_k:
+  push_to_hub: false
+  private: true

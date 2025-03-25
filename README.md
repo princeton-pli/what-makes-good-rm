@@ -51,7 +51,7 @@ The resulting TensorBoard logs and model checkpoint will be created under the di
 </details>
 
 ### 2. Generating On-Policy Responses for UltraFeedback
-Generate on-policy responses (sampled from the intial policy) for reward model training using the following [configuration file](./src/experiments_configs/Section4.1/pref_data/pref_data_pythia_2-8b_alpaca_sft_onpolicy_relabel_uf_config.yaml).
+Generate on-policy responses (sampled from the initial policy) for reward model training using the following [configuration file](./src/experiments_configs/Section4.1/pref_data/pref_data_pythia_2-8b_alpaca_sft_onpolicy_relabel_uf_config.yaml).
 Make sure to:
 - Set the ```language_model_path``` configuration to the path of the SFT model trained in [step 1](#1-supervised-finetuning-sft).
 

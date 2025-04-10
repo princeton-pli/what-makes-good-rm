@@ -68,7 +68,7 @@ The generated dataset will be saved under the directory specified in the configu
 Using the off-policy UltraFeedback responses and on-policy responses generated in [step 2](#2-generating-on-policy-responses-for-ultrafeedback), we train five reward models on different mixes of on-policy and off-policy responses (100%, 75%, 50%, 25%, or 0% on-policy).
 The configuration files for reward model training can be found [here](./src/experiments_configs/Section4.1/rm_train/).
 In each configuration file, make sure to:
-- Set the ```dataset_path``` configuration to of the dataset with on-policy responses generated in [step 2](#2-generating-on-policy-responses-for-ultrafeedback).
+- Set the ```dataset_path``` configuration to the dataset with on-policy responses generated in [step 2](#2-generating-on-policy-responses-for-ultrafeedback).
 - Set the ```second_dataset_path``` configuration to the dataset with original UltraFeedback responses generated in [the preliminary data preparation step](#relabeling-and-splitting-UltraFeedback-using-a-ground-truth-reward-model).
 - Set the ```pretrained_model_path``` configuration to the path of the SFT model trained in [step 1](#1-supervised-finetuning-sft).
 

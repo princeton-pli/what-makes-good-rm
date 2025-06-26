@@ -111,7 +111,7 @@ Make sure to:
 <summary><strong>Command for running policy gradient using accelerate on 2 GPUs:</strong></summary>
 
 ```sh
-accelerate launch --num_processes 2 --num_machines 1 --config_file src/accelerate_configs/deepspeed3.yaml src/main.py src/main.py --config src/experiments_configs/Section4.2/pg/llama_1b_rloo_uf_sft_config.yaml
+accelerate launch --num_processes 2 --num_machines 1 --config_file src/accelerate_configs/deepspeed3.yaml src/main.py --config src/experiments_configs/Section4.2/pg/llama_1b_rloo_uf_sft_config.yaml
 ```
 The resulting TensorBoard logs and checkpoints will be saved under the directory specified in the configuration file. Default is ```outputs/rloo/pythia2-8b_alpaca``` or ```outputs/rloo/pythia2-8b_alpaca_gt``` (depending on whether the configuration for a trained reward model or the ground truth reward is used).
 
@@ -193,7 +193,7 @@ Make sure to:
 <summary><strong>Command for running policy gradient using Pythia-1B SFT on 2 GPUs:</strong></summary>
 
 ```sh
-accelerate launch --num_processes 2 --num_machines 1 --config_file src/accelerate_configs/deepspeed3.yaml src/main.py src/main.py --config src/experiments_configs/Section4.2/pg/pythia_1b_rloo_uf_sft_config.yaml
+accelerate launch --num_processes 2 --num_machines 1 --config_file src/accelerate_configs/deepspeed3.yaml src/main.py --config src/experiments_configs/Section4.2/pg/pythia_1b_rloo_uf_sft_config.yaml
 ```
 The resulting TensorBoard logs and checkpoints will be saved under the directory specified in the configuration file. Default is: ```outputs/rloo_open_rms/pythia1b_uf```.
 </details>
@@ -203,7 +203,7 @@ The resulting TensorBoard logs and checkpoints will be saved under the directory
 
 
 ```sh
-accelerate launch --num_processes 2 --num_machines 1 --config_file src/accelerate_configs/deepspeed3.yaml src/main.py src/main.py --config src/experiments_configs/Section4.2/pg/llama_1b_rloo_uf_sft_config.yaml
+accelerate launch --num_processes 2 --num_machines 1 --config_file src/accelerate_configs/deepspeed3.yaml src/main.py --config src/experiments_configs/Section4.2/pg/llama_1b_rloo_uf_sft_config.yaml
 ```
 The resulting TensorBoard logs and checkpoints will be saved under the directory specified in the configuration file. Default is: ```outputs/rloo_open_rms/llama1b_uf```.
 </details>
@@ -212,7 +212,7 @@ The resulting TensorBoard logs and checkpoints will be saved under the directory
 <summary><strong>Command for running policy gradient using Llama-3.2-1B-Instruct on 2 GPUs:</strong></summary>
 
 ```sh
-accelerate launch --num_processes 2 --num_machines 1 --config_file src/accelerate_configs/deepspeed3.yaml src/main.py src/main.py --config src/experiments_configs/Section4.2/pg/llama_1b_instruct_rloo_config.yaml
+accelerate launch --num_processes 2 --num_machines 1 --config_file src/accelerate_configs/deepspeed3.yaml src/main.py --config src/experiments_configs/Section4.2/pg/llama_1b_instruct_rloo_config.yaml
 ```
 The resulting TensorBoard logs and checkpoints will be saved under the directory specified in the configuration file. Default is: ```outputs/rloo_open_rms/llama1b_instruct```.
 </details>

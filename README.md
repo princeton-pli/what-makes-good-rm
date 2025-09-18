@@ -1,6 +1,6 @@
 # What Makes a Reward Model a Good Teacher? An Optimization Perspective
 
-[[Paper](https://arxiv.org/abs/2503.15477)]
+[[Paper](https://arxiv.org/abs/2503.15477)] (NeurIPS 2025)
 
 Official implementation based on the [PyTorch](https://pytorch.org/) and [Hugging Face TRL](https://huggingface.co/docs/trl/en/index)
 libraries.

@@ -221,10 +221,10 @@ The resulting TensorBoard logs and checkpoints will be saved under the directory
 ## Citation
 For citing the paper you can use:
 ```bibtex
-@article{razin2025what,
+@inproceedings{razin2025what,
   title={What Makes a Reward Model a Good Teacher? An Optimization Perspective},
   author={Razin, Noam and Wang, Zixuan and Strauss, Hubert and Wei, Stanley and Lee, Jason D and Arora, Sanjeev},
-  journal={arXiv preprint arXiv:2503.15477},
+  booktitle = {Advances in Neural Information Processing Systems},
   year={2025}
 }
 ```
